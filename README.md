@@ -1,4 +1,4 @@
-Redmine install script
-======================
+# Redmine Install
 
-Install Redmine and its dependencies
+*This repository is about installing Redmine on Ubuntu*
+
