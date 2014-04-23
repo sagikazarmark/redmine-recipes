@@ -3,7 +3,7 @@
 # REDMINE
 # Maintainer: @sagikazarmark
 # Authors: @sagikazarmark
-# App Version: 2.4
+# App Version: 2.5
 
 ### BEGIN INIT INFO
 # Provides:          redmine
@@ -143,7 +143,7 @@ start() {
     # Remove old socket if it exists
     rm -f "$socket_path"/redmine.socket 2>/dev/null
     # Start the web server
-    RAILS_ENV=$RAILS_ENV script/web start &
+    RAILS_ENV=$RAILS_ENV script/web start
   fi
 
   # Wait for the pid to be planted

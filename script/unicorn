@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 cd $(dirname $0)/..
 app_root=$(pwd)
@@ -26,4 +26,3 @@ function stop
   get_unicorn_pid
   kill -QUIT $unicorn_pid
 }
-
