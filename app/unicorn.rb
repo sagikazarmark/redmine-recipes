@@ -34,7 +34,7 @@ working_directory "/home/redmine/redmine" # available in 0.94.0+
 
 # listen on both a Unix domain socket and a TCP port,
 # we use a shorter backlog for quicker failover when busy
-listen "#{working_directory}/tmp/sockets/redmine.socket", :backlog => 64
+listen "/home/redmine/redmine/tmp/sockets/redmine.socket", :backlog => 64
 listen "127.0.0.1:8080", :tcp_nopush => true
 #listen "0.0.0.0:8080", :tcp_nopush => true
 
@@ -42,13 +42,13 @@ listen "127.0.0.1:8080", :tcp_nopush => true
 timeout 30
 
 # feel free to point this anywhere accessible on the filesystem
-pid "#{working_directory}/tmp/pids/unicorn.pid"
+pid "/home/redmine/redmine/tmp/pids/unicorn.pid"
 
 # By default, the Unicorn logger will write to stderr.
 # Additionally, some applications/frameworks log to stderr or stdout,
 # so prevent them from going to /dev/null when daemonized here:
-stderr_path "#{working_directory}/log/unicorn.stderr.log"
-stdout_path "#{working_directory}/log/unicorn.stdout.log"
+stderr_path "/home/redmine/redmine/log/unicorn.stderr.log"
+stdout_path "/home/redmine/redmine/log/unicorn.stdout.log"
 
 # combine Ruby 2.0.0dev or REE with "preload_app true" for memory savings
 # http://rubyenterpriseedition.com/faq.html#adapt_apps_for_cow
