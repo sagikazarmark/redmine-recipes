@@ -9,7 +9,7 @@
 # documentation.
 
 # Uncomment and customize the last line to run in a non-root path
-# WARNING: We recommend creating a FQDN to host GitLab in a root path instead of this.
+# WARNING: We recommend creating a FQDN to host Redmine in a root path instead of this.
 # Note that four settings need to be changed for this to work.
 # 1) In your application.rb file: config.relative_url_root = "/redmine"
 # 2) In your redmine.yml file: relative_url_root: /redmine
