@@ -1,11 +1,11 @@
 #This configuration has been tested on Redmine 2.5
 #Note this config assumes unicorn is listening on default port 8080.
 #Module dependencies
-# mod_rewrite
-# mod_ssl
-# mod_proxy
-# mod_proxy_http
-# mod_headers
+#  mod_rewrite
+#  mod_ssl
+#  mod_proxy
+#  mod_proxy_http
+#  mod_headers
 
 # This section is only needed if you want to redirect http traffic to https.
 # You can live without it but clients will have to type in https:// to reach redmine.
@@ -22,14 +22,10 @@
   SSLEngine on
   #strong encryption ciphers only
   #see ciphers(1) http://www.openssl.org/docs/apps/ciphers.html
-  SSLProtocol all -SSLv2
-  SSLHonorCipherOrder on
-  SSLCipherSuite "ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:DH+3DES:RSA+AESGCM:RSA+AES:RSA+3DES:!aNULL:!MD5:!DSS"
-  Header add Strict-Transport-Security: "max-age=15768000;includeSubdomains"
-  SSLCompression Off
-  SSLCertificateFile /etc/apache2/ssl.crt/redmine.example.com.crt
+  SSLCipherSuite SSLv3:TLSv1:+HIGH:!SSLv2:!MD5:!MEDIUM:!LOW:!EXP:!ADH:!eNULL:!aNULL
+  SSLCertificateFile    /etc/apache2/ssl.crt/redmine.example.com.crt
   SSLCertificateKeyFile /etc/apache2/ssl.key/redmine.example.com.key
-  SSLCACertificateFile /etc/apache2/ssl.crt/your-ca.crt
+  SSLCACertificateFile  /etc/apache2/ssl.crt/your-ca.crt
 
   ServerName redmine.example.com
   ServerSignature Off
@@ -37,9 +33,8 @@
   ProxyPreserveHost On
 
   <Location />
-    # New authorization commands for apache 2.4 and up
-    # http://httpd.apache.org/docs/2.4/upgrading.html#access
-    Require all granted
+    Order deny,allow
+    Allow from all
 
     ProxyPassReverse http://127.0.0.1:8080
     ProxyPassReverse http://redmine.example.com/
@@ -56,7 +51,7 @@
   DocumentRoot /home/redmine/redmine/public
 
   LogFormat "%{X-Forwarded-For}i %l %u %t \"%r\" %>s %b" common_forwarded
-  ErrorLog /var/log/apache2/logs/redmine.example.com_error.log
+  ErrorLog  /var/log/apache2/logs/redmine.example.com_error.log
   CustomLog /var/log/apache2/logs/redmine.example.com_forwarded.log common_forwarded
   CustomLog /var/log/apache2/logs/redmine.example.com_access.log combined env=!dontlog
   CustomLog /var/log/apache2/logs/redmine.example.com.log combined
