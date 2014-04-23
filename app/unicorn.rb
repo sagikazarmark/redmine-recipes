@@ -19,7 +19,7 @@
 
 # Use at least one worker per core if you're on a dedicated server,
 # more will usually help for _short_ waits on databases/caches.
-worker_processes 1
+worker_processes 2
 
 # Since Unicorn is never exposed to outside clients, it does not need to
 # run on the standard HTTP port (80), there is no reason to start Unicorn
@@ -35,8 +35,8 @@ working_directory "/home/redmine/redmine" # available in 0.94.0+
 # listen on both a Unix domain socket and a TCP port,
 # we use a shorter backlog for quicker failover when busy
 listen "#{working_directory}/tmp/sockets/redmine.socket", :backlog => 64
-listen "127.0.0.1:8001", :tcp_nopush => true
-#listen "0.0.0.0:8001", :tcp_nopush => true
+listen "127.0.0.1:8081", :tcp_nopush => true
+#listen "0.0.0.0:8081", :tcp_nopush => true
 
 # nuke workers after 30 seconds instead of 60 seconds (the default)
 timeout 30
