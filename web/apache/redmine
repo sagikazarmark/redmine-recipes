@@ -28,9 +28,9 @@
   DocumentRoot /home/redmine/redmine/public
 
   LogFormat "%{X-Forwarded-For}i %l %u %t \"%r\" %>s %b" common_forwarded
-  ErrorLog  /var/log/apache2/logs/redmine.example.com_error.log
-  CustomLog /var/log/apache2/logs/redmine.example.com_forwarded.log common_forwarded
-  CustomLog /var/log/apache2/logs/redmine.example.com_access.log combined env=!dontlog
-  CustomLog /var/log/apache2/logs/redmine.example.com.log combined
+  ErrorLog  /var/log/apache2/redmine.example.com_error.log
+  CustomLog /var/log/apache2/redmine.example.com_forwarded.log common_forwarded
+  CustomLog /var/log/apache2/redmine.example.com_access.log combined env=!dontlog
+  CustomLog /var/log/apache2/redmine.example.com.log combined
 
 </VirtualHost>
